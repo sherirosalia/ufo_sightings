@@ -2,121 +2,50 @@
 var ufoData = data;
 
 
-
-// YOUR CODE HERE!
-
-// Console.log the ufo data from data.js
-
-console.log(ufoData);
-
-
-//get a reference to the table body
-
 var tbody = d3.select('tbody');
 // loop through the data and append table (tbody in the html)
 
-function write_row(Sightings) {
-    console.log(Sightings);
+var fields = ['datetime', 'city', 'state', 'country', 'shape', "duration (hours/min)", 'comments']
+
+function write_row(oneSighting) {
+    // console.log(oneSighting);
+
     var row = tbody.append('tr');
-     
-   
-    Object.entries(Sightings).forEach(function([key, value]) {
-        console.log(key, value);
+    var cell;
+    for(var field of fields){
 
-        var cell = tbody.append('td')
-        cell.text(value);
+        cell = row.append('td')
+        cell.text(oneSighting[field])
 
+    }
 
-    })
 }
 
 
-ufoData.forEach(write_row)
+//for looping through inputs on change
+var inputs = ['datetime', 'state', 'city', 'comments'];
+var submit = d3.select('#filter-btn');
 
+var filter = d3.selectAll(".filter");
 
-var submit = d3.select('#filter-btn')
+filter.on('change', function() { 
 
-submit.on('click', function() {
+    // d3.event.preventDefault();
+    tbody.html("");
+    var filteredData = ufoData;
+    for(var input of inputs){
+        var inputElement = d3.select('#'+input);
+        var inputValue = inputElement.property('value');
+        console.log(inputValue);
 
-    d3.event.preventDefault();
-    var inputElement = d3.select('#datetime');
-    var inputValue = inputElement.property('value');
-    console.log(inputValue);
-    console.log(ufoData);
+        filteredData = filteredData.filter(function(entry){
 
+            return entry[input].toLowerCase().includes(inputValue.toLowerCase());
 
-    var filteredData = ufoData.filter(function(entry){
-        return entry.datetime === inputValue;
-    })
+        });
+    }
 
-    tbody.html("")
-    filteredData.forEach(write_row)
-
-    console.log(filteredData)
+    //66k lines, too much to show limited to 200
+    filteredData.slice(0, 200).forEach(write_row);
 });
 
-
-
-//console.log(filteredData);
-
-
-// //create filter 
-
-// var people = data;
-// //console.log(people)
-
-// // Select the submit button
-// var submit = d3.select("#filter-btn");
-
-// // Complete the click handler for the form
-// submit.on("click", function() {
-
-// // Prevent the page from refreshing
-
-//   d3.event.preventDefault();
-
-// // Select the input element and get the raw HTML node
-
-//   var inputElement = d3.select('#datetime');
-
-// // Get the value property of the input element
-
-//   var inputValue = inputElement.property('value');
-
-//   console.log(inputValue);
-//   console.log(people);
-
-//  // Use the form input to filter the data by blood type
-
-//   var filteredData = people.filter(person => person.datetime === inputValue);
-
-//   console.log(filteredData);
-
-
- 
-//   // BONUS: Calculate summary statistics for the age field of the filtered data
-
-//   // First, create an array with just the age values
-
-//   var dates = filteredData.map(person => person.datetime);
-//   console.log(dates)
-
-
-// var submit = ufoData = d3.select('#filter-btn');
-
-// submit.on('click', function() {
-//     d3.event.preventDefault();
-
-//     var inputElement = d3.select('#datetime');
-
-//     var inputValue = inputElement.property('value');
-
-//     console.log(inputValue);
-//     console.log(ufoData);
-
-//     var filteredSightings = ufoData.filter(ufo => ufoData.datetime === inputValue);
-
-//     console.log(filteredSightings)
-
-
-// });

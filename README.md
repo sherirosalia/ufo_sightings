@@ -1,5 +1,7 @@
 # ufo_sightings
-Simple website table search of UFO sightings during the first two weeks of 1/10. Used d3.js for its conservation of coding.
+Table filters on change to display UFO sightings from over 50 years, and 66,000 data points.
+
+Used python to convert csv file to json. Javascript and d3.js to interact with data and html display.
 
 https://sherirosalia.github.io/ufo_sightings/
 
