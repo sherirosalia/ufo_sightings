@@ -2,11 +2,7 @@
   box-sizing: border-box;
   font-family: Ubuntu, sans-serif;
 }
-5
 
- tbody tr td:second-of-type {
-     color: red;
- }
 html,
 body {
   height: 100%;
@@ -14,12 +10,20 @@ body {
   margin: 0;
 }
 
+p{
+  display:block;
+  padding: .05em;
+}
 /* The wrapper contains all of the page's content besides the footer, which is pushed to the bottom of the page */
 .wrapper {
   position: relative;
   min-height: 100%;
   padding-bottom: 130px;
   overflow: auto;
+}
+
+#map {
+  height: 450px;
 }
 
 /* The footer is positioned at the bottom of the page */
@@ -31,6 +35,7 @@ body {
   min-height: 100px;
   background: #4e5d6c;
 }
+
 
 /* The code styles the text at the bottom of the footer */
 .footer > .bottom {
@@ -149,6 +154,16 @@ select {
   }
 }
 
+@media (max-width: 700px) {
+  .pagination li {
+    font-size: 0.8em;
+  }
+
+  .pagination > li > a {
+    padding: 6px 12px;
+  }
+}
+
 @media (max-width: 500px) {
   #table-area thead {
     display: none;
@@ -172,7 +187,7 @@ select {
     content: " ";
     background: aliceblue;
   }
- 
+
   #table-area td {
     font-size: 1.25em;
   }
@@ -180,7 +195,6 @@ select {
   #table-area tbody td {
     display: block;
     text-align: center;
-    
   }
 
   #table-area tbody td::before {
@@ -191,12 +205,14 @@ select {
     content: attr(data-th);
   }
 
-  table {
-    border: 2px solid #555;
-    border-collapse: collapse;
-    font: 16px "Lucida Grande", "Helvetica", "Arial", sans-serif;
-
+  .pagination li {
+    font-size: 0.6em;
   }
+
+  .pagination > li > a {
+    padding: 4px 8px;
+  }
+
   .hero h1 {
     animation: smaller-title 1.2s forwards linear;
   }

@@ -52,7 +52,7 @@ filter.on('change', function() {
     for(var input of inputs){
         var inputElement = d3.select('#'+input);
         var inputValue = inputElement.property('value');
-        // console.log(inputValue);
+        console.log(inputValue);
 
         filteredData = filteredData.filter(function(entry){
 
