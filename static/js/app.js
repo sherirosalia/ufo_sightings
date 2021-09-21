@@ -3,7 +3,7 @@ var ufoData = data;
 
 // leaflet map import
 
-let accessToken = "pk.eyJ1IjoiY2VyZWphcm9zaW5oYSIsImEiOiJjanMxNzA4c2Excjg2NDlwZG9sbTB3NXM3In0.XnJlhKPl64KMkzAMzd0D3A";
+let accessToken = "put here";
 // leaflet
 var map = L.map('map').setView([35.505, -95.4], 5);
 
